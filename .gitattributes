@@ -1,0 +1,7 @@
+assets/world_quarter_mesh.tres filter=lfs diff=lfs merge=lfs -text
+scenes/world.tscn filter=lfs diff=lfs merge=lfs -text
+/world.tscn filter=lfs diff=lfs merge=lfs -text
+/world_quarter_mesh.tres filter=lfs diff=lfs merge=lfs -text
+/assets/world_quarter_mesh.tres filter=lfs diff=lfs merge=lfs -text
+/scenes/world.tscn filter=lfs diff=lfs merge=lfs -text
+* !text !filter !merge !diff

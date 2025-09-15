@@ -1,0 +1,13 @@
+MeshInstance3D
+Node3D
+GridMap
+Camera3D
+AudioStreamPlayer3D
+SpringArm3D
+AnimationPlayer
+DirectionalLight3D
+CollisionShape3D
+StaticBody3D
+WorldEnvironment
+AnimatedSprite3D
+CharacterBody3D

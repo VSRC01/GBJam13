@@ -1,0 +1,8 @@
+res://scenes/world.tscn
+res://shaders/sky.gdshader
+res://shaders/pixel.gdshader
+res://scenes/ground.tscn
+res://assets/world_quarter_mesh.tres
+res://scripts/ground_loader.gd
+res://scenes/character.tscn
+res://assets/world_quarter_collision.tres

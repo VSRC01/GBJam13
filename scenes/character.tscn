@@ -1,0 +1,199 @@
+[gd_scene load_steps=14 format=3 uid="uid://bpf3iibn8j7ut"]
+
+[ext_resource type="Script" uid="uid://dgtna63fwnf2h" path="res://scripts/character_body_3d.gd" id="1_glpr6"]
+[ext_resource type="Material" uid="uid://7amh3cenpawq" path="res://colors/pink.tres" id="2_pjt0s"]
+[ext_resource type="Material" uid="uid://cev85jj8tfo72" path="res://colors/crust.tres" id="3_wa5vi"]
+[ext_resource type="AudioStream" uid="uid://2sdldr8g57dp" path="res://sounds/walk.ogg" id="4_wfnr8"]
+
+[sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_wfnr8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pjt0s"]
+size = Vector3(0.5, 1.12278, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_glpr6"]
+material = ExtResource("2_pjt0s")
+size = Vector3(0.2, 0.2, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wa5vi"]
+material = ExtResource("2_pjt0s")
+size = Vector3(0.3, 0.2, 0.4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pjt0s"]
+material = ExtResource("2_pjt0s")
+size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wfnr8"]
+material = ExtResource("3_wa5vi")
+size = Vector3(0.2, 0.05, 0.2)
+
+[sub_resource type="Animation" id="Animation_wfnr8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Model/body:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.0111986, 0.565488, -0.0111986)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Model/body2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.0111986, 0.77387, -0.0111986)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Model/hands:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.313309, 0.565488, -0.0111985)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Model/hands2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.323092, 0.565488, -0.0111986)]
+}
+
+[sub_resource type="Animation" id="Animation_wa5vi"]
+resource_name = "idle"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Model/body:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.0111986, 0.565488, -0.0111986), Vector3(-0.0111986, 0.505677, -0.0111986)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Model/body2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.0111986, 0.77387, -0.0111986), Vector3(-0.0111986, 0.714059, -0.0111986)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Model/hands:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.313309, 0.565488, -0.0111985), Vector3(0.313309, 0.505677, -0.0111985)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Model/hands2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.323092, 0.565488, -0.0111986), Vector3(-0.323092, 0.505677, -0.0111986)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_px5sl"]
+_data = {
+&"RESET": SubResource("Animation_wfnr8"),
+&"idle": SubResource("Animation_wa5vi")
+}
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+script = ExtResource("1_glpr6")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.908275, 0.418374, 0, -0.418374, 0.908275, 0, 1.1149, 0)
+shape = SubResource("SeparationRayShape3D_wfnr8")
+spring_length = 6.135
+
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
+transform = Transform3D(1, 0, 0, 0, 0.908275, -0.418375, 0, 0.418375, 0.908275, 0, -0.0386879, 6.17962)
+fov = 90.0
+near = 0.001
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.654797, 0)
+shape = SubResource("BoxShape3D_pjt0s")
+
+[node name="Model" type="Node3D" parent="."]
+
+[node name="head" type="MeshInstance3D" parent="Model"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0111986, 1.11082, -0.0111986)
+mesh = SubResource("BoxMesh_glpr6")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("3_wa5vi")
+
+[node name="body" type="MeshInstance3D" parent="Model"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0111986, 0.565488, -0.0111986)
+mesh = SubResource("BoxMesh_glpr6")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("3_wa5vi")
+
+[node name="body2" type="MeshInstance3D" parent="Model"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0111986, 0.77387, -0.0111986)
+mesh = SubResource("BoxMesh_wa5vi")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("3_wa5vi")
+
+[node name="hands" type="MeshInstance3D" parent="Model"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.313309, 0.565488, -0.0111985)
+mesh = SubResource("BoxMesh_pjt0s")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("3_wa5vi")
+
+[node name="hands2" type="MeshInstance3D" parent="Model"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.323092, 0.565488, -0.0111986)
+mesh = SubResource("BoxMesh_pjt0s")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("3_wa5vi")
+
+[node name="Shadow" type="MeshInstance3D" parent="Model"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0111986, 0.101386, -0.0111986)
+mesh = SubResource("BoxMesh_wfnr8")
+skeleton = NodePath("../..")
+
+[node name="Walk" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_wfnr8")
+volume_db = -25.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_px5sl")
+}
