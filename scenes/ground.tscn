@@ -7,6 +7,8 @@
 mesh = ExtResource("1_yh8r4")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = ExtResource("2_mi8v4")

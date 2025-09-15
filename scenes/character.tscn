@@ -1,14 +1,15 @@
-[gd_scene load_steps=14 format=3 uid="uid://bpf3iibn8j7ut"]
+[gd_scene load_steps=16 format=3 uid="uid://bpf3iibn8j7ut"]
 
 [ext_resource type="Script" uid="uid://dgtna63fwnf2h" path="res://scripts/character_body_3d.gd" id="1_glpr6"]
 [ext_resource type="Material" uid="uid://7amh3cenpawq" path="res://colors/pink.tres" id="2_pjt0s"]
 [ext_resource type="Material" uid="uid://cev85jj8tfo72" path="res://colors/crust.tres" id="3_wa5vi"]
 [ext_resource type="AudioStream" uid="uid://2sdldr8g57dp" path="res://sounds/walk.ogg" id="4_wfnr8"]
+[ext_resource type="AudioStream" uid="uid://b5udh2wovlhgp" path="res://sounds/run.ogg" id="5_dp8ca"]
 
 [sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_wfnr8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pjt0s"]
-size = Vector3(0.5, 1.12278, 0.5)
+size = Vector3(0.5, 1.28502, 0.5)
 
 [sub_resource type="BoxMesh" id="BoxMesh_glpr6"]
 material = ExtResource("2_pjt0s")
@@ -22,9 +23,13 @@ size = Vector3(0.3, 0.2, 0.4)
 material = ExtResource("2_pjt0s")
 size = Vector3(0.1, 0.1, 0.1)
 
+[sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_my7n2"]
+margin = 0.1
+length = 0.001
+
 [sub_resource type="BoxMesh" id="BoxMesh_wfnr8"]
 material = ExtResource("3_wa5vi")
-size = Vector3(0.2, 0.05, 0.2)
+size = Vector3(0.1, 0.1, 0.1)
 
 [sub_resource type="Animation" id="Animation_wfnr8"]
 length = 0.001
@@ -149,7 +154,7 @@ fov = 90.0
 near = 0.001
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.654797, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.573676, 0)
 shape = SubResource("BoxShape3D_pjt0s")
 
 [node name="Model" type="Node3D" parent="."]
@@ -184,14 +189,25 @@ mesh = SubResource("BoxMesh_pjt0s")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("3_wa5vi")
 
-[node name="Shadow" type="MeshInstance3D" parent="Model"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0111986, 0.101386, -0.0111986)
+[node name="SpringArm3D" type="SpringArm3D" parent="Model"]
+transform = Transform3D(1, 0, 0, 0, -2.18557e-07, -1, 0, 1, -2.18557e-07, 0, 0.455182, -0.0436452)
+collision_mask = 2
+shape = SubResource("SeparationRayShape3D_my7n2")
+spring_length = 3.0
+margin = 0.1
+
+[node name="Shadow" type="MeshInstance3D" parent="Model/SpringArm3D"]
+transform = Transform3D(-4.37114e-08, -4.37114e-08, -1, -1, 7.54979e-08, 4.37114e-08, 7.54979e-08, 1, -4.37114e-08, -0.0111986, 0.0397861, 2.88775)
 mesh = SubResource("BoxMesh_wfnr8")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
 [node name="Walk" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_wfnr8")
 volume_db = -25.0
+
+[node name="Run" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_dp8ca")
+volume_db = -20.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

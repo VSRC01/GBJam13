@@ -192,7 +192,7 @@ points = PackedVector3Array(512, 32.9075, 7.765, 512, 32.9075, -7.765, -512, 32.
 environment = SubResource("Environment_fj7yv")
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("2_w7kh3")]
-transform = Transform3D(-0.877431, 0, -0.479703, 0, 1, 0, 0.479703, 0, -0.877431, -6.35833, 24.3607, 5.90136)
+transform = Transform3D(-0.877431, 0, -0.479703, 0, 1, 0, 0.479703, 0, -0.877431, -6.35833, 23.9631, 5.90136)
 floor_max_angle = 1.22173
 
 [node name="DirectionalLight3D4" type="DirectionalLight3D" parent="CharacterBody3D"]
